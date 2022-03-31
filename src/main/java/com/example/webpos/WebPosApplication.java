@@ -6,8 +6,8 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 @SpringBootApplication
-@EnableRedisHttpSession
 @EnableCaching
+@EnableRedisHttpSession
 public class WebPosApplication {
 
     public static void main(String[] args) {

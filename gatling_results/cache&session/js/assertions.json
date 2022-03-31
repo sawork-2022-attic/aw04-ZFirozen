@@ -1,0 +1,10 @@
+{
+  "simulation": "gatlingtest.GatlingTestSimulation",
+  "simulationId": "gatlingtestsimulation",
+  "start": 1648761499405,
+  "description": "",
+  "scenarios": ["Testing Web Pos based on JD DataSource"],
+  "assertions": [
+
+  ]
+}

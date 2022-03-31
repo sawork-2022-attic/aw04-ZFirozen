@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class PosController {
 
+
     private PosService posService;
 
     @Autowired
@@ -25,6 +26,7 @@ public class PosController {
         if (cart == null) {
             cart = new Cart();
             this.saveCart(cart);
+            ;
         }
         return cart;
     }
@@ -32,11 +34,6 @@ public class PosController {
     private void saveCart(Cart cart) {
         session.setAttribute("cart", cart);
     }
-
-//    @Autowired
-//    public void setCart(Cart cart) {
-//        this.cart = cart;
-//    }
 
     @Autowired
     public void setPosService(PosService posService) {
@@ -53,7 +50,7 @@ public class PosController {
 
     @GetMapping("/add")
     public String addByGet(@RequestParam(name = "pid") String pid, Model model) {
-        saveCart(posService.add(getCart(), pid, 1));
+        posService.add(getCart(), pid, 1);
         model.addAttribute("products", posService.products());
         model.addAttribute("cart", getCart());
         return "index";
