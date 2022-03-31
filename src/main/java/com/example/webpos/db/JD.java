@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
+//import java.util.HashMap;
 import java.util.List;
 
 @Repository
@@ -43,12 +43,12 @@ public class JD implements PosDB {
         return null;
     }
 
-    public static HashMap<String, String> convertCookie(String cookie) {
-        HashMap<String, String> cookiesMap = new HashMap<String, String>();
-        String[] items = cookie.trim().split(";");
-        for (String item:items) cookiesMap.put(item.split("=")[0], item.split("=")[1]);
-        return cookiesMap;
-    }
+//    public static HashMap<String, String> convertCookie(String cookie) {
+//        HashMap<String, String> cookiesMap = new HashMap<String, String>();
+//        String[] items = cookie.trim().split(";");
+//        for (String item:items) cookiesMap.put(item.split("=")[0], item.split("=")[1]);
+//        return cookiesMap;
+//    }
 
     public static List<Product> parseJD(String keyword) throws IOException {
         //获取请求https://search.jd.com/Search?keyword=java
