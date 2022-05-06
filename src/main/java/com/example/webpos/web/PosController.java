@@ -26,7 +26,6 @@ public class PosController {
         if (cart == null) {
             cart = new Cart();
             this.saveCart(cart);
-            ;
         }
         return cart;
     }
@@ -43,7 +42,17 @@ public class PosController {
     @GetMapping("/")
     public String pos(Model model, HttpServletRequest httpServletRequest) {
         httpServletRequest.getSession(true);
-        model.addAttribute("products", posService.products());
+        model.addAttribute("product-start", 0);
+        model.addAttribute("products", posService.products(0));
+        model.addAttribute("cart", getCart());
+        return "index";
+    }
+
+    @GetMapping("/product-start")
+    public String posStartBy(@RequestParam(name = "begin") int start, Model model, HttpServletRequest httpServletRequest) {
+        httpServletRequest.getSession(true);
+        model.addAttribute("product-start", start);
+        model.addAttribute("products", posService.products(start));
         model.addAttribute("cart", getCart());
         return "index";
     }
@@ -51,7 +60,7 @@ public class PosController {
     @GetMapping("/add")
     public String addByGet(@RequestParam(name = "pid") String pid, Model model) {
         posService.add(getCart(), pid, 1);
-        model.addAttribute("products", posService.products());
+        model.addAttribute("products", posService.products(0));
         model.addAttribute("cart", getCart());
         return "index";
     }

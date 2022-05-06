@@ -25,7 +25,7 @@ public class PosServiceImp implements PosService, Serializable {
 
     @Override
     public Product randomProduct() {
-        return products().get(ThreadLocalRandom.current().nextInt(0, products().size()));
+        return products(0).get(ThreadLocalRandom.current().nextInt(0, products(0).size()));
     }
 
     @Override
@@ -49,7 +49,7 @@ public class PosServiceImp implements PosService, Serializable {
     }
 
     @Override
-    public List<Product> products() {
-        return posDB.getProducts();
+    public List<Product> products(int start) {
+        return posDB.getProducts(start);
     }
 }

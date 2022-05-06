@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface PosDB {
 
-    public List<Product> getProducts();
+    public List<Product> getProducts(int start);
 
     public Product getProduct(String productId);
 
